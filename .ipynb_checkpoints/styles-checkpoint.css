@@ -1,0 +1,59 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background: #0056b3;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.subtitle {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 5px 0;
+}
+
+/* Section Styling */
+.section {
+    background: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 24px;
+    color: #0056b3;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+}
+
+h3 {
+    font-size: 20px;
+    color: #444;
+    margin-top: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .section {
+        width: 90%;
+    }
+}
