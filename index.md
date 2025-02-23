@@ -3,35 +3,34 @@ layout: default
 title: Identifying ecDNA Genomic Regions using Graph Neural Networks
 ---
 
-## Identifying ecDNA Genomic Regions using Graph Nueral Networks
+# Identifying ecDNA Genomic Regions using Graph Nueral Networks
 
-### Background and Research Goals
-Explain...
-
-### Data
-#### HI-C Matrices
-Explain...
-#### RNA-seq Reads
+## Background and Research Goals
 Explain...
 
-### Methods
-#### Node2Vec
+## Data
+### HI-C Matrices
 Explain...
-#### GraphSAGE
+### RNA-seq Reads
 Explain...
 
-### Interaction Graphs
+## Methods
+### Node2Vec
+Explain...
+### GraphSAGE
+Explain...
+
+## Interaction Graphs
 Display graphs here...
 
-### Results
-#### Node2Vec Embeddings and Clusters
+## Results
+### Node2Vec Embeddings and Clusters
 Explain...
-#### GraphSAGE Classification Results
-Explain...
-
-### Discussion
+### GraphSAGE Classification Results
 Explain...
 
-### References
+## Discussion
+Explain...
+
+## References
 List references...
-
