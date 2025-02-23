@@ -1,2 +1,13 @@
-remote_theme: just-the-docs/just-the-docs@v0.4.0.rc3
-color_scheme: bluecsd
+title: DSC Capstone Website
+description: Identifying ecDNA Genomic Regions using Graph Neural Networks
+url: "https://vikwaran03.github.io/dsc-capstone-website/"
+
+theme: minima 
+
+markdown: kramdown
+permalink: pretty
+
+exclude:
+  - README.md
+minima:
+  skin: auto # Can be "dark", "light", or "auto"
