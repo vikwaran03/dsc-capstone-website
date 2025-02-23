@@ -4,14 +4,9 @@ url: "https://vikwaran03.github.io/dsc-capstone-website/"
 
 theme: minima
 
-markdown: kramdown
-permalink: pretty
-
 exclude:
   - README.md
-minima:
-  skin: auto # Can be "dark", "light", or "auto"
-
+  
 authors:
   vikram:
     name: Vikram Venkatesh
