@@ -1,5 +1,6 @@
 ---
-layout: minima
+layout: default
+title: Identifying ecDNA Genomic Regions using Graph Neural Networks
 ---
 
 ## Identifying ecDNA Genomic Regions using Graph Nueral Networks

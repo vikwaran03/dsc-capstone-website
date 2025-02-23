@@ -2,7 +2,7 @@ title: DSC Capstone Website
 description: Identifying ecDNA Genomic Regions using Graph Neural Networks
 url: "https://vikwaran03.github.io/dsc-capstone-website/"
 
-theme: minima 
+remote_theme: jekyll/minima
 
 markdown: kramdown
 permalink: pretty
