@@ -11,3 +11,16 @@ exclude:
   - README.md
 minima:
   skin: auto # Can be "dark", "light", or "auto"
+
+authors:
+  vikram:
+    name: Vikram Venkatesh
+    github: vikwaran03
+
+  vrisan:
+    name: Vrisan Dubey
+    github: vdubey0
+
+  matthew:
+    name: Matthew Dalquist
+    github: mdalquist
