@@ -125,7 +125,7 @@ We defined three different types of clusters given our results - the sparse outl
     <img src="figures/selected_clusters_3d (1).png" alt="Image 1" width="45%">
     <img src="figures/ec_structure_selected_genes (2).png" alt="Image 2" width="45%">
 </div>
-<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 7: &nbsp;<strong>Left</strong>: ecDNA Structure with Clusters 4 and 5 highlighted &nbsp;<strong>Right</strong>: Same as &nbsp;<strong>Left</strong> but specific genes highlighted </p>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 7: &nbsp;<strong>Left</strong>: ecDNA Structure with Clusters 4 and 5 highlighted &nbsp;<strong>Right</strong>: Same as &nbsp;<strong>Left</strong>&nbsp; but specific genes highlighted </p>
    
 3. Graphically, the two most populous clusters in ecDNA and HSR behave significantly differently. At the 5% significance level, the only two clusters that were significant in all of the graph properties we looked at were Cluster 1 (outliers) and Cluster 2 (dense core). These two clusters behave distrinctly when it comes to HI-C interactions and gene/read counts.
 
