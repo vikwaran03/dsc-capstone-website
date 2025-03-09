@@ -12,6 +12,8 @@ Explain...
 Explain...
 ### RNA-seq Reads
 Explain...
+## Interaction Graphs
+Display graphs here...
 
 ## Methods
 ### Node2Vec
@@ -33,24 +35,18 @@ We trained GraphSAGE on a graph containing both the ecDNA and HSR portions, with
 
 *Figure 2: GraphSAGE Classification Pipeline*
 
-## Interaction Graphs
-Display graphs here...
+
 
 ## Results
 ### Node2Vec Embeddings and Clusters
 These are the results of PCA and subsequent clustering for ecDNA (left) and HSR (right).
 
-<div style="display: flex; justify-content: center; align-items: center;">
-    <figure>
-        <img src="figures/ec_clusters (4).png" alt="Image 1" style="width: 35%;">
-        <figcaption style="text-align: center;">Figure 1: Description of Image 1</figcaption>
-    </figure>
-    <figure>
-        <img src="figures/hsr_clusters.png" alt="Image 2" style="width: 35%;">
-        <figcaption style="text-align: center;">Figure 2: Description of Image 2</figcaption>
-    </figure>
+<div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+    <img src="figures/ec_clusters (4).png" alt="Image 1" width="45%">
+    <img src="figures/hsr_clusters.png" alt="Image 2" width="45%">
 </div>
 
+<br>
 
 We visualized these clusters by overlaying their locations on top of the heatmap of the corresponding HI-C matrix. We also attached a gene track under each of the plots to visualize which genes were present within our loci range. It allows us to compare whether clusters match up with the presence of genes.
 
@@ -59,31 +55,63 @@ We visualized these clusters by overlaying their locations on top of the heatmap
     <img src="figures/hsr_hic_clusters (3).png" alt="Image 2" width="45%">
 </div>
 
+<br>
+
 After computing these clusters, we checked if these clusters created significant differences in terms of multiple graph properties. Specifically, we applied a Mann-Whitney U-Test on all pairs clusters for each property that we were interested in. The following heatmap shows the p-values for each U-Test that we conducted. We defined significance at p < 0.05.
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-    <img src="figures/ec_pval_heatmap (1).png" alt="Image 1" width="80%">
+    <img src="figures/ec_pval_heatmap (1).png" alt="Image 1" width="90%">
 </div>
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-    <img src="figures/hsr_pval_heatmap (1).png" alt="Image 1" width="80%">
+    <img src="figures/hsr_pval_heatmap (1).png" alt="Image 1" width="90%">
 </div>
+
+<br>
 
 ### GraphSAGE Classification Results
 We trained our GraphSAGE classification model on the combined graph G, obtaining the results in the table below. We split the graph into train, validation, and test sets using masks with a split of 70%/15%/15%. The test metrics in the table display the results of predictions on both the validation and test sets. Early stopping was implemented to capture the best performing model during training.
 
-| **Metric**   | **Train**  | **Test**   |
-|-------------|-----------|-----------|
-| Accuracy    | 0.92308   | **0.81333** |
-| Precision   | 0.92327   | 0.82799   |
-| Recall      | 0.92294   | **0.82719** |
-| F1 Score    | 0.92304   | 0.82744   |
-
-*Table 1: GraphSAGE Performance Metrics*
-
-![Confusion Matrix](figures/sage_confusion_matrix%20(1).png)
-
-*Figure 3: Confusion Matrix of GraphSAGE Predictions on Test Set*
+<div style="display: flex; justify-content: center; align-items: center; gap: 40px;">
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Train</th>
+                    <th>Test</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Accuracy</td>
+                    <td>0.92308</td>
+                    <td><b>0.81333</b></td>
+                </tr>
+                <tr>
+                    <td>Precision</td>
+                    <td>0.92327</td>
+                    <td>0.82799</td>
+                </tr>
+                <tr>
+                    <td>Recall</td>
+                    <td>0.92294</td>
+                    <td><b>0.82719</b></td>
+                </tr>
+                <tr>
+                    <td>F1 Score</td>
+                    <td>0.92304</td>
+                    <td>0.82744</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="text-align: center;"><em>Table 1: GraphSAGE Performance Metrics</em></p>
+    </div>
+    <div>
+        <img src="figures/sage_confusion_matrix%20(1).png" alt="Confusion Matrix" style="width: 40%;">
+        <p style="text-align: center;"><em>Figure 1: Confusion Matrix</em></p>
+    </div>
+</div>
 
 ## Discussion
 ### Node2Vec
