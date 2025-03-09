@@ -20,6 +20,7 @@ Display graphs here...
 We develop a pipeline as above to cluster our data. We take our ecDNA interaction graph, as defined above; apply node2vec on it, giving us 16-dimensional vectors for each node; append the read counts and gene counts to the embeddings; reduce the data to 2 dimensions using PCA; and lastly cluster the data using DB-SCAN. We then repeat the process on the HSR graph. DB-SCAN allows us to find an unspecified number of clusters because we did not have a pre-specified amount of classes that we were looking for.
 
 ![Node2Vec Clustering Pipeline](figures/clustering_pipeline.png)
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 1: Clustering Pipeline </p>
 
 ### **Classification**
 
@@ -30,6 +31,7 @@ GraphSAGE is useful for our classification problem due to differences in genomic
 We trained GraphSAGE on a graph containing both the ecDNA and HSR portions, with each being a disjoint subgraph of a larger graph. Our model followed an encoder decoder paradigm. The encoder consisted of two GraphSAGE layers that generated 16-dimensional embeddings for each node. The decoder consisted of two linear fully connected layers with ReLU activation, reducing the dimensionality to a 2 dimensional output layer. Softmax was applied to the output layer for classification, and Cross Entropy loss was used to evaluate predictions and train the model.  
 
 ![GraphSAGE Classification Pipeline](figures/Sage%20Process.png)
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 1: Classification Pipeline </p>
 
 
 ## **Results**
@@ -40,7 +42,7 @@ These are the results of PCA and subsequent clustering for ecDNA (left) and HSR 
     <img src="figures/ec_clusters (4).png" alt="Image 1" width="45%">
     <img src="figures/hsr_clusters.png" alt="Image 2" width="45%">
 </div>
-<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 1: ecDNA (left) and HSR (right) PCA clusters </p>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 3: ecDNA (left) and HSR (right) PCA clusters </p>
 
 <br>
 
@@ -50,7 +52,7 @@ We visualized these clusters by overlaying their locations on top of the heatmap
     <img src="figures/ec_hic_clusters (2).png" alt="Image 1" width="45%">
     <img src="figures/hsr_hic_clusters (3).png" alt="Image 2" width="45%">
 </div>
-<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 2: ecDNA (left) and HSR (right) HI-C heatmap with clusters and gene track </p>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 4: ecDNA (left) and HSR (right) HI-C heatmap with clusters and gene track </p>
 
 <br>
 
@@ -59,12 +61,12 @@ After computing these clusters, we checked if these clusters created significant
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
     <img src="figures/ec_pval_heatmap (1).png" alt="Image 1" width="90%">
 </div>
-<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 3: ecDNA U-Test P-Values </p>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 5: ecDNA U-Test P-Values </p>
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
     <img src="figures/hsr_pval_heatmap (1).png" alt="Image 1" width="90%">
 </div>
-<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 3: HSR U-Test P-Values </p>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 6: HSR U-Test P-Values </p>
 
 
 <br>
@@ -123,6 +125,7 @@ We defined three different types of clusters given our results - the sparse outl
     <img src="figures/selected_clusters_3d (1).png" alt="Image 1" width="45%">
     <img src="figures/ec_structure_selected_genes (2).png" alt="Image 2" width="45%">
 </div>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 7: **Left**: ecDNA Structure with Clusters 4 and 5 highlighted **Right**: Same as **Left** but specific genes highlighted </p>
    
 3. Graphically, the two most populous clusters in ecDNA and HSR behave significantly differently. At the 5% significance level, the only two clusters that were significant in all of the graph properties we looked at were Cluster 1 (outliers) and Cluster 2 (dense core). These two clusters behave distrinctly when it comes to HI-C interactions and gene/read counts.
 
