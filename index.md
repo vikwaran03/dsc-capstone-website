@@ -105,16 +105,14 @@ We trained our GraphSAGE classification model on the combined graph G, obtaining
                 </tr>
             </tbody>
         </table>
-        <p style="text-align: center;"><em>Table 1: GraphSAGE Performance Metrics</em></p>
     </div>
     <div>
-        <img src="figures/sage_confusion_matrix%20(1).png" alt="Confusion Matrix" style="width: 40%;">
-        <p style="text-align: center;"><em>Figure 1: Confusion Matrix</em></p>
+        <img src="figures/sage_confusion_matrix%20(1).png" alt="Confusion Matrix" style="width: 100%;">
     </div>
 </div>
 
 ## Discussion
-### Node2Vec
+### Clustering
 We defined three different types of clusters given our results - the sparse outliers, the dense core, and the more tightly clustered regions. We examined the nature of these three and came away with three conclusions:
 
 1. Differences in ecDNA and HSR clusters suggest distinct sets of similarly behaving genes specific to each structure. We hypothesize that these differences in clusters from ecDNA and HSRs could come from their different 3d structures. Specifically, it tells us that in ecDNA, certain genomic regions are being brought together in new spatial neighborhoods, likely exposing different genes to regulatory elements like enhancers or promoters. Conversely, in HSRs, different clusters suggest a different structural pattern, which may be causing the regulation of an alternate set of genes
