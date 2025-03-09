@@ -40,14 +40,19 @@ Display graphs here...
 ### Node2Vec Embeddings and Clusters
 These are the results of PCA and subsequent clustering for ecDNA (left) and HSR (right).
 
-<div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-    <img src="figures/ec_clusters (4).png" alt="Image 1" width="45%">
-    <img src="figures/hsr_clusters.png" alt="Image 2" width="45%">
+<div style="display: flex; justify-content: center; align-items: center;">
+    <figure>
+        <img src="figures/ec_clusters (4).png" alt="Image 1" style="width: 35%;">
+        <figcaption style="text-align: center;">Figure 1: Description of Image 1</figcaption>
+    </figure>
+    <figure>
+        <img src="figures/hsr_clusters.png" alt="Image 2" style="width: 35%;">
+        <figcaption style="text-align: center;">Figure 2: Description of Image 2</figcaption>
+    </figure>
 </div>
 
 
 We visualized these clusters by overlaying their locations on top of the heatmap of the corresponding HI-C matrix. We also attached a gene track under each of the plots to visualize which genes were present within our loci range. It allows us to compare whether clusters match up with the presence of genes.
-
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
     <img src="figures/ec_hic_clusters (2).png" alt="Image 1" width="45%">
@@ -89,11 +94,11 @@ We defined three different types of clusters given our results - the sparse outl
 2. Less populous clusters within ecDNA reveal structurally related genes. The plot below shows how regions in the same cluster that correspond to genes are related in 3D space. For example, we can see two regions from Cluster 5 that correspond to genes NIPSNAP2 (blue) and ZNF713 (lime). Now from the figure on the right, we can see that these genes lie along a loop in 3d space. This gives us evidence toward the fact these genes may share regulatory elements like promoters or enhancers and be co-regulated/co-expressed in ecDNA.
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-    <img src="figures/sage_confusion_matrix (1).png" alt="Image 1" width="45%">
+    <img src="figures/selected_clusters_3d.png" alt="Image 1" width="45%">
     <img src="figures/ec_structure_selected_genes (1).png" alt="Image 2" width="45%">
 </div>
    
-3. Graphically, the two most populous clusters in ecDNA and HSR behave significantly differently. At the 5% significance level, the only two clusters that were significant in all of the graph properties we looked at were Cluster 1 (outliers) and Cluster 2 (dense core). These two clusters behave distrincly when it comes to HI-C interactions and gene/read counts. 
+3. Graphically, the two most populous clusters in ecDNA and HSR behave significantly differently. At the 5% significance level, the only two clusters that were significant in all of the graph properties we looked at were Cluster 1 (outliers) and Cluster 2 (dense core). These two clusters behave distrinctly when it comes to HI-C interactions and gene/read counts. 
 ### GraphSAGE
 Explain...
 
