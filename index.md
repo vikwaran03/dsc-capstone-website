@@ -1,10 +1,9 @@
 ---
 layout: default
-title: Identifying ecDNA Genomic Regions using Graph Neural Networks
+title: Characterizing Extrachromosomal DNA Regions with Graph Neural Networks
 ---
 
-# Identifying ecDNA Genomic Regions using Graph Nueral Networks
-
+# Characterizing Extrachromosomal DNA Regions with Graph Neural Networks
 ## Background and Research Goals
 Explain...
 
@@ -27,9 +26,19 @@ Display graphs here...
 ### Node2Vec Embeddings and Clusters
 Explain...
 ### GraphSAGE Classification Results
-Explain...
+We trained our GraphSAGE classification model on the combined graph G, obtaining the results in the table below. We split the graph into train, validation, and test sets using masks with a split of 70%/15%/15%. The test metrics in the table display the results of predictions on both the validation and test sets. Early stopping was implemented to capture the best performing model during training.
+
+| **Metric**   | **Train**  | **Test**   |
+|-------------|-----------|-----------|
+| Accuracy    | 0.92308   | **0.81333** |
+| Precision   | 0.92327   | 0.82799   |
+| Recall      | 0.92294   | **0.82719** |
+| F1 Score    | 0.92304   | 0.82744   |
 
 ## Discussion
+### Node2Vec
+Explain...
+### GraphSAGE
 Explain...
 
 ## References
