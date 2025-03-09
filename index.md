@@ -3,11 +3,11 @@ layout: default
 title: Characterizing Extrachromosomal DNA Regions with Graph Neural Networks
 ---
 
-# Characterizing Extrachromosomal DNA Regions with Graph Neural Networks
-## Background and Research Goals
+# **Characterizing Extrachromosomal DNA Regions with Graph Neural Networks**
+## **Background and Research Goals**
 Explain...
 
-## Data
+## **Data**
 ### **HI-C Matrices**
 Explain...
 ### **RNA-seq Reads**
@@ -15,15 +15,15 @@ Explain...
 ## Interaction Graphs
 Display graphs here...
 
-## Methods
+## **Methods**
 ### **Node2Vec**
 We develop a pipeline as above to cluster our data. We take our ecDNA interaction graph, as defined above; apply node2vec on it, giving us 16-dimensional vectors for each node; append the read counts and gene counts to the embeddings; reduce the data to 2 dimensions using PCA; and lastly cluster the data using DB-SCAN. We then repeat the process on the HSR graph. DB-SCAN allows us to find an unspecified number of clusters because we did not have a pre-specified amount of classes that we were looking for.
+
+![Node2Vec Clustering Pipeline](figures/clustering_pipeline.png)
 
 ### **GraphSAGE**
 
 ![GraphSAGE Algorithm](figures/graphsagevis.png)
-
-*Figure 1: GraphSAGE Algorithm*
 
 GraphSAGE is useful for our classification problem due to differences in genomic interaction and genetic expression between HSR and ecDNA. In terms of genomic interaction, ecDNA has a circular structure [2], whereas HSR does not, allowing regions within ecDNA to uniquely interact. In terms of genetic expression, ecDNA is more expressive than HSR. Its existence off of the chromosome amplifies the genes it contains. Genomic interaction is represented by the edges in our graph, and expression is captured in the graph through the RNA-seq read count feature of the node vector. Notable differences in interactions and expression, captured by the structure and node features of the graph, naturally lead to the use of GraphSAGE for the classification task.
 
@@ -31,11 +31,8 @@ We trained GraphSAGE on a graph containing both the ecDNA and HSR portions, with
 
 ![GraphSAGE Classification Pipeline](figures/Sage%20Process.png)
 
-*Figure 2: GraphSAGE Classification Pipeline*
 
-
-
-## Results
+## **Results**
 ### **Node2Vec Embeddings and Clusters**
 These are the results of PCA and subsequent clustering for ecDNA (left) and HSR (right).
 
@@ -109,7 +106,7 @@ We trained our GraphSAGE classification model on the combined graph G, obtaining
     </div>
 </div>
 
-## Discussion
+## **Discussion**
 ### **Clustering**
 We defined three different types of clusters given our results - the sparse outliers, the dense core, and the more tightly clustered regions. We examined the nature of these three and came away with three conclusions:
 
@@ -125,7 +122,7 @@ We defined three different types of clusters given our results - the sparse outl
 3. Graphically, the two most populous clusters in ecDNA and HSR behave significantly differently. At the 5% significance level, the only two clusters that were significant in all of the graph properties we looked at were Cluster 1 (outliers) and Cluster 2 (dense core). These two clusters behave distrinctly when it comes to HI-C interactions and gene/read counts.
 
 ### **GraphSAGE**
-Of the four metrics listed in Table 1, accuracy and recall are the key metrics for evaluating classification for our problem. Recall is particularly important for our task due to the cancerous properties of ecDNA. Recall weights false negatives, which for our problem, means predicting HSR (a benign region) when the region is ecDNA (a cancerous region). Failing to diagnose a patient with cancer is far more harmful than diagnosing a non-cancer patient with cancer, the false positive case. Fortunately, our GraphSAGE is generating balanced predictions, as seen in the Figure 3 confusion matrix.
+Of the four metrics we used to evaluate GraphSAGE, accuracy and recall are the most critical for our problem. Recall is particularly important for our task due to the cancerous properties of ecDNA. Recall weights false negatives, which for our problem, means predicting HSR (a benign region) when the region is ecDNA (a cancerous region). Failing to diagnose a patient with cancer is far more harmful than diagnosing a non-cancer patient with cancer, the false positive case. Fortunately, our GraphSAGE is generating balanced predictions, as seen in the confusion matrix.
 
 GraphSAGE performed well on both the train and test sets, but there is a notable discrepancy of about 0.1 in each metric between the two sets. This is likely due to the small size of our dataset. However, strong performance on the train set is a positive indicator that GraphSAGE was able to find patterns in the graph structure and node features differentiating ecDNA and HSR. Obtaining more cell samples on the GBM39 cell line can boost the robustness of our graph learning model. To further extend research on the classification task, GNNExplainer [4] can be attached to the GraphSAGE model to learn key predictive regions of the graph. These subgraphs can be matched to their 3D location, which could uncover key differences in structure between ecDNA and HSR. 
 
