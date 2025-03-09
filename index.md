@@ -3,7 +3,10 @@ layout: default
 title: Characterizing Extrachromosomal DNA Regions with Graph Neural Networks
 ---
 
-# **Characterizing Extrachromosomal DNA Regions with Graph Neural Networks**
+<h1 style="text-align: center;">
+  Characterizing Extrachromosomal DNA Regions with Graph Neural Networks
+</h1>
+
 ## **Background and Research Goals**
 Explain...
 
