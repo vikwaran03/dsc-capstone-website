@@ -8,20 +8,18 @@ title: Characterizing Extrachromosomal DNA Regions with Graph Neural Networks
 Explain...
 
 ## Data
-### HI-C Matrices
+### **HI-C Matrices**
 Explain...
-### RNA-seq Reads
+### **RNA-seq Reads**
 Explain...
 ## Interaction Graphs
 Display graphs here...
 
 ## Methods
-### Node2Vec
+### **Node2Vec**
 We develop a pipeline as above to cluster our data. We take our ecDNA interaction graph, as defined above; apply node2vec on it, giving us 16-dimensional vectors for each node; append the read counts and gene counts to the embeddings; reduce the data to 2 dimensions using PCA; and lastly cluster the data using DB-SCAN. We then repeat the process on the HSR graph. DB-SCAN allows us to find an unspecified number of clusters because we did not have a pre-specified amount of classes that we were looking for.
 
-### GraphSAGE
-
-GraphSAGE is an inductive graph learning algorithm that simultaneously learns the graphical structure of the neighborhood of a node and the distribution of their features to create aggregated embeddings for each node in the training set of a graph [1]. For each node in the training set, GraphSAGE samples its neighbors and aggregates their features to update node embeddings. The vector containing the aggregated information of the neighbors is concatenated to the current state of the embedding for the target node. The final result is a set of node embeddings that contain information about the node features of its neighbors and the structure of the graph that produced them.
+### **GraphSAGE**
 
 ![GraphSAGE Algorithm](figures/graphsagevis.png)
 
@@ -38,7 +36,7 @@ We trained GraphSAGE on a graph containing both the ecDNA and HSR portions, with
 
 
 ## Results
-### Node2Vec Embeddings and Clusters
+### **Node2Vec Embeddings and Clusters**
 These are the results of PCA and subsequent clustering for ecDNA (left) and HSR (right).
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
@@ -69,7 +67,7 @@ After computing these clusters, we checked if these clusters created significant
 
 <br>
 
-### GraphSAGE Classification Results
+### **GraphSAGE Classification Results**
 We trained our GraphSAGE classification model on the combined graph G, obtaining the results in the table below. We split the graph into train, validation, and test sets using masks with a split of 70%/15%/15%. The test metrics in the table display the results of predictions on both the validation and test sets. Early stopping was implemented to capture the best performing model during training.
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 40px;">
@@ -112,7 +110,7 @@ We trained our GraphSAGE classification model on the combined graph G, obtaining
 </div>
 
 ## Discussion
-### Clustering
+### **Clustering**
 We defined three different types of clusters given our results - the sparse outliers, the dense core, and the more tightly clustered regions. We examined the nature of these three and came away with three conclusions:
 
 1. Differences in ecDNA and HSR clusters suggest distinct sets of similarly behaving genes specific to each structure. We hypothesize that these differences in clusters from ecDNA and HSRs could come from their different 3d structures. Specifically, it tells us that in ecDNA, certain genomic regions are being brought together in new spatial neighborhoods, likely exposing different genes to regulatory elements like enhancers or promoters. Conversely, in HSRs, different clusters suggest a different structural pattern, which may be causing the regulation of an alternate set of genes
@@ -124,11 +122,19 @@ We defined three different types of clusters given our results - the sparse outl
     <img src="figures/ec_structure_selected_genes (1).png" alt="Image 2" width="45%">
 </div>
    
-3. Graphically, the two most populous clusters in ecDNA and HSR behave significantly differently. At the 5% significance level, the only two clusters that were significant in all of the graph properties we looked at were Cluster 1 (outliers) and Cluster 2 (dense core). These two clusters behave distrinctly when it comes to HI-C interactions and gene/read counts. 
-### GraphSAGE
-Explain...
+3. Graphically, the two most populous clusters in ecDNA and HSR behave significantly differently. At the 5% significance level, the only two clusters that were significant in all of the graph properties we looked at were Cluster 1 (outliers) and Cluster 2 (dense core). These two clusters behave distrinctly when it comes to HI-C interactions and gene/read counts.
+
+### **GraphSAGE**
+Of the four metrics listed in Table 1, accuracy and recall are the key metrics for evaluating classification for our problem. Recall is particularly important for our task due to the cancerous properties of ecDNA. Recall weights false negatives, which for our problem, means predicting HSR (a benign region) when the region is ecDNA (a cancerous region). Failing to diagnose a patient with cancer is far more harmful than diagnosing a non-cancer patient with cancer, the false positive case. Fortunately, our GraphSAGE is generating balanced predictions, as seen in the Figure 3 confusion matrix.
+
+GraphSAGE performed well on both the train and test sets, but there is a notable discrepancy of about 0.1 in each metric between the two sets. This is likely due to the small size of our dataset. However, strong performance on the train set is a positive indicator that GraphSAGE was able to find patterns in the graph structure and node features differentiating ecDNA and HSR. Obtaining more cell samples on the GBM39 cell line can boost the robustness of our graph learning model. To further extend research on the classification task, GNNExplainer [4] can be attached to the GraphSAGE model to learn key predictive regions of the graph. These subgraphs can be matched to their 3D location, which could uncover key differences in structure between ecDNA and HSR. 
 
 ## References
 [1] **Hamilton, William L., Rex Ying, and Jure Leskovec.** 2018. “Inductive Representation Learning on Large Graphs.” [Link](https://arxiv.org/abs/1706.02216)
 
-[2] **Wu, Sihan, Kristen M Turner, Nam Nguyen, Ramya Raviram, Marcella Erb, Jennifer Santini, Jens Luebeck, Utkrisht Rajkumar, Yarui Diao, Bin Li et al.** 2019. “Circular ecDNA promotes accessible chromatin and high oncogene expression.” Nature 575 (7784): 699–703 [Link](https://www.nature.com/articles/s41586-019-1763-5)
+[2] **Prechelt, Lutz.** 2002. “Early stopping-but when?” In Neural Networks: Tricks of the trade. Springer: 55–69 [Link](https://link.springer.com/chapter/10.1007/3-540-49430-8_3)
+
+[3] **Wu, Sihan, Kristen M Turner, Nam Nguyen, Ramya Raviram, Marcella Erb, Jennifer Santini, Jens Luebeck, Utkrisht Rajkumar, Yarui Diao, Bin Li et al.** 2019. “Circular ecDNA promotes accessible chromatin and high oncogene expression.” Nature 575 (7784): 699–703 [Link](https://www.nature.com/articles/s41586-019-1763-5)
+
+[4] **Ying, Rex, Dylan Bourgeois, Jiaxuan You, Marinka Zitnik, and Jure Leskovec.** 2019. “GNNExplainer: Generating Explanations for Graph Neural Networks.” [Link](https://arxiv.org/abs/1903.03894)
+
