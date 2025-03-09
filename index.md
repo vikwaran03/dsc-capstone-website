@@ -31,7 +31,7 @@ GraphSAGE is useful for our classification problem due to differences in genomic
 We trained GraphSAGE on a graph containing both the ecDNA and HSR portions, with each being a disjoint subgraph of a larger graph. Our model followed an encoder decoder paradigm. The encoder consisted of two GraphSAGE layers that generated 16-dimensional embeddings for each node. The decoder consisted of two linear fully connected layers with ReLU activation, reducing the dimensionality to a 2 dimensional output layer. Softmax was applied to the output layer for classification, and Cross Entropy loss was used to evaluate predictions and train the model.  
 
 ![GraphSAGE Classification Pipeline](figures/Sage%20Process.png)
-<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 1: Classification Pipeline </p>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 2: Classification Pipeline </p>
 
 
 ## **Results**
@@ -125,7 +125,7 @@ We defined three different types of clusters given our results - the sparse outl
     <img src="figures/selected_clusters_3d (1).png" alt="Image 1" width="45%">
     <img src="figures/ec_structure_selected_genes (2).png" alt="Image 2" width="45%">
 </div>
-<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 7: **Left**: ecDNA Structure with Clusters 4 and 5 highlighted **Right**: Same as **Left** but specific genes highlighted </p>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 7: <strong>Left</strong>: ecDNA Structure with Clusters 4 and 5 highlighted <strong>Right</strong>: Same as <strong>Left</strong> but specific genes highlighted </p>
    
 3. Graphically, the two most populous clusters in ecDNA and HSR behave significantly differently. At the 5% significance level, the only two clusters that were significant in all of the graph properties we looked at were Cluster 1 (outliers) and Cluster 2 (dense core). These two clusters behave distrinctly when it comes to HI-C interactions and gene/read counts.
 
