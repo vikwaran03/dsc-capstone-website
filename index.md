@@ -16,12 +16,12 @@ Explain...
 Display graphs here...
 
 ## **Methods**
-### **Node2Vec**
+### **Clustering**
 We develop a pipeline as above to cluster our data. We take our ecDNA interaction graph, as defined above; apply node2vec on it, giving us 16-dimensional vectors for each node; append the read counts and gene counts to the embeddings; reduce the data to 2 dimensions using PCA; and lastly cluster the data using DB-SCAN. We then repeat the process on the HSR graph. DB-SCAN allows us to find an unspecified number of clusters because we did not have a pre-specified amount of classes that we were looking for.
 
 ![Node2Vec Clustering Pipeline](figures/clustering_pipeline.png)
 
-### **GraphSAGE**
+### **Classification**
 
 ![GraphSAGE Algorithm](figures/graphsagevis.png)
 
@@ -33,13 +33,14 @@ We trained GraphSAGE on a graph containing both the ecDNA and HSR portions, with
 
 
 ## **Results**
-### **Node2Vec Embeddings and Clusters**
+### **Clustering Results**
 These are the results of PCA and subsequent clustering for ecDNA (left) and HSR (right).
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
     <img src="figures/ec_clusters (4).png" alt="Image 1" width="45%">
     <img src="figures/hsr_clusters.png" alt="Image 2" width="45%">
 </div>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 8px"> Figure 1 </p>
 
 <br>
 
@@ -64,7 +65,7 @@ After computing these clusters, we checked if these clusters created significant
 
 <br>
 
-### **GraphSAGE Classification Results**
+### **Classification Results**
 We trained our GraphSAGE classification model on the combined graph G, obtaining the results in the table below. We split the graph into train, validation, and test sets using masks with a split of 70%/15%/15%. The test metrics in the table display the results of predictions on both the validation and test sets. Early stopping was implemented to capture the best performing model during training.
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 40px;">
@@ -115,13 +116,13 @@ We defined three different types of clusters given our results - the sparse outl
 2. Less populous clusters within ecDNA reveal structurally related genes. The plot below shows how regions in the same cluster that correspond to genes are related in 3D space. For example, we can see two regions from Cluster 5 that correspond to genes NIPSNAP2 (blue) and ZNF713 (lime). Now from the figure on the right, we can see that these genes lie along a loop in 3d space. This gives us evidence toward the fact these genes may share regulatory elements like promoters or enhancers and be co-regulated/co-expressed in ecDNA.
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-    <img src="figures/selected_clusters_3d.png" alt="Image 1" width="45%">
-    <img src="figures/ec_structure_selected_genes (1).png" alt="Image 2" width="45%">
+    <img src="figures/selected_clusters_3d (1).png" alt="Image 1" width="45%">
+    <img src="figures/ec_structure_selected_genes (2).png" alt="Image 2" width="45%">
 </div>
    
 3. Graphically, the two most populous clusters in ecDNA and HSR behave significantly differently. At the 5% significance level, the only two clusters that were significant in all of the graph properties we looked at were Cluster 1 (outliers) and Cluster 2 (dense core). These two clusters behave distrinctly when it comes to HI-C interactions and gene/read counts.
 
-### **GraphSAGE**
+### **Classification**
 Of the four metrics we used to evaluate GraphSAGE, accuracy and recall are the most critical for our problem. Recall is particularly important for our task due to the cancerous properties of ecDNA. Recall weights false negatives, which for our problem, means predicting HSR (a benign region) when the region is ecDNA (a cancerous region). Failing to diagnose a patient with cancer is far more harmful than diagnosing a non-cancer patient with cancer, the false positive case. Fortunately, our GraphSAGE is generating balanced predictions, as seen in the confusion matrix.
 
 GraphSAGE performed well on both the train and test sets, but there is a notable discrepancy of about 0.1 in each metric between the two sets. This is likely due to the small size of our dataset. However, strong performance on the train set is a positive indicator that GraphSAGE was able to find patterns in the graph structure and node features differentiating ecDNA and HSR. Obtaining more cell samples on the GBM39 cell line can boost the robustness of our graph learning model. To further extend research on the classification task, GNNExplainer [4] can be attached to the GraphSAGE model to learn key predictive regions of the graph. These subgraphs can be matched to their 3D location, which could uncover key differences in structure between ecDNA and HSR. 
