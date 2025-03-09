@@ -40,7 +40,7 @@ These are the results of PCA and subsequent clustering for ecDNA (left) and HSR 
     <img src="figures/ec_clusters (4).png" alt="Image 1" width="45%">
     <img src="figures/hsr_clusters.png" alt="Image 2" width="45%">
 </div>
-<p style="display: flex; justify-content: center; align-items: center; font-size: 8px"> Figure 1 </p>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 1: ecDNA (left) and HSR (right) PCA clusters </p>
 
 <br>
 
@@ -50,6 +50,7 @@ We visualized these clusters by overlaying their locations on top of the heatmap
     <img src="figures/ec_hic_clusters (2).png" alt="Image 1" width="45%">
     <img src="figures/hsr_hic_clusters (3).png" alt="Image 2" width="45%">
 </div>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 2: ecDNA (left) and HSR (right) HI-C heatmap with clusters and gene track </p>
 
 <br>
 
@@ -58,10 +59,13 @@ After computing these clusters, we checked if these clusters created significant
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
     <img src="figures/ec_pval_heatmap (1).png" alt="Image 1" width="90%">
 </div>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 3: ecDNA U-Test P-Values </p>
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
     <img src="figures/hsr_pval_heatmap (1).png" alt="Image 1" width="90%">
 </div>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 3: HSR U-Test P-Values </p>
+
 
 <br>
 
