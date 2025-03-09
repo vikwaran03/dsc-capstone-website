@@ -38,11 +38,31 @@ Display graphs here...
 
 ## Results
 ### Node2Vec Embeddings and Clusters
-These are the results of the PCA (left) and the subsequent clustering (right) for ecDNA (top) and HSR (bottom).
+These are the results of PCA and subsequent clustering for ecDNA (left) and HSR (right).
+
+<div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+    <img src="figures/ec_clusters (4).png" alt="Image 1" width="45%">
+    <img src="figures/hsr_clusters.png" alt="Image 2" width="45%">
+</div>
+
 
 We visualized these clusters by overlaying their locations on top of the heatmap of the corresponding HI-C matrix. We also attached a gene track under each of the plots to visualize which genes were present within our loci range. It allows us to compare whether clusters match up with the presence of genes.
 
+
+<div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+    <img src="figures/ec_hic_clusters (2).png" alt="Image 1" width="45%">
+    <img src="figures/hsr_hic_clusters (3).png" alt="Image 2" width="45%">
+</div>
+
 After computing these clusters, we checked if these clusters created significant differences in terms of multiple graph properties. Specifically, we applied a Mann-Whitney U-Test on all pairs clusters for each property that we were interested in. The following heatmap shows the p-values for each U-Test that we conducted. We defined significance at p < 0.05.
+
+<div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+    <img src="figures/ec_pval_heatmap (1).png" alt="Image 1" width="80%">
+</div>
+
+<div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+    <img src="figures/hsr_pval_heatmap (1).png" alt="Image 1" width="80%">
+</div>
 
 ### GraphSAGE Classification Results
 We trained our GraphSAGE classification model on the combined graph G, obtaining the results in the table below. We split the graph into train, validation, and test sets using masks with a split of 70%/15%/15%. The test metrics in the table display the results of predictions on both the validation and test sets. Early stopping was implemented to capture the best performing model during training.
@@ -67,6 +87,11 @@ We defined three different types of clusters given our results - the sparse outl
 1. Differences in ecDNA and HSR clusters suggest distinct sets of similarly behaving genes specific to each structure. We hypothesize that these differences in clusters from ecDNA and HSRs could come from their different 3d structures. Specifically, it tells us that in ecDNA, certain genomic regions are being brought together in new spatial neighborhoods, likely exposing different genes to regulatory elements like enhancers or promoters. Conversely, in HSRs, different clusters suggest a different structural pattern, which may be causing the regulation of an alternate set of genes
    
 2. Less populous clusters within ecDNA reveal structurally related genes. The plot below shows how regions in the same cluster that correspond to genes are related in 3D space. For example, we can see two regions from Cluster 5 that correspond to genes NIPSNAP2 (blue) and ZNF713 (lime). Now from the figure on the right, we can see that these genes lie along a loop in 3d space. This gives us evidence toward the fact these genes may share regulatory elements like promoters or enhancers and be co-regulated/co-expressed in ecDNA.
+
+<div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+    <img src="figures/sage_confusion_matrix (1).png" alt="Image 1" width="45%">
+    <img src="figures/ec_structure_selected_genes (1).png" alt="Image 2" width="45%">
+</div>
    
 3. Graphically, the two most populous clusters in ecDNA and HSR behave significantly differently. At the 5% significance level, the only two clusters that were significant in all of the graph properties we looked at were Cluster 1 (outliers) and Cluster 2 (dense core). These two clusters behave distrincly when it comes to HI-C interactions and gene/read counts. 
 ### GraphSAGE
