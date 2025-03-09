@@ -22,7 +22,7 @@ Display graphs here...
 
 ## **Methods**
 ### **Clustering**
-We develop a pipeline as above to cluster our data. We take our ecDNA interaction graph, as defined above; apply node2vec on it, giving us 16-dimensional vectors for each node; append the read counts and gene counts to the embeddings; reduce the data to 2 dimensions using PCA; and lastly cluster the data using DB-SCAN. We then repeat the process on the HSR graph. DB-SCAN allows us to find an unspecified number of clusters because we did not have a pre-specified amount of classes that we were looking for.
+We develop a pipeline as below to cluster our data. We take our ecDNA interaction graph, as defined above; apply node2vec on it, giving us 16-dimensional vectors for each node; append the read counts and gene counts to the embeddings; reduce the data to 2 dimensions using PCA; and lastly cluster the data using DB-SCAN. We then repeat the process on the HSR graph. DB-SCAN allows us to find an unspecified number of clusters because we did not have a pre-specified amount of classes that we were looking for.
 
 ![Node2Vec Clustering Pipeline](figures/clustering_pipeline.png)
 <p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 1: Clustering Pipeline </p>
