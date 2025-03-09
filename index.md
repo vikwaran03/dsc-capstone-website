@@ -116,7 +116,7 @@ We trained our GraphSAGE classification model on the combined graph G, obtaining
     </div>
 </div>
 
-## **Discussion**
+## **Takeaways**
 ### **Clustering**
 We defined three different types of clusters given our results - the sparse outliers, the dense core, and the more tightly clustered regions. We examined the nature of these three and came away with three conclusions:
 
@@ -137,7 +137,7 @@ Of the four metrics we used to evaluate GraphSAGE, accuracy and recall are the m
 
 GraphSAGE performed well on both the train and test sets, but there is a notable discrepancy of about 0.1 in each metric between the two sets. This is likely due to the small size of our dataset. However, strong performance on the train set is a positive indicator that GraphSAGE was able to find patterns in the graph structure and node features differentiating ecDNA and HSR. Obtaining more cell samples on the GBM39 cell line can boost the robustness of our graph learning model. To further extend research on the classification task, GNNExplainer [4] can be attached to the GraphSAGE model to learn key predictive regions of the graph. These subgraphs can be matched to their 3D location, which could uncover key differences in structure between ecDNA and HSR. 
 
-## References
+## **References**
 [1] **Hamilton, William L., Rex Ying, and Jure Leskovec.** 2018. “Inductive Representation Learning on Large Graphs.” [Link](https://arxiv.org/abs/1706.02216)
 
 [2] **Prechelt, Lutz.** 2002. “Early stopping-but when?” In Neural Networks: Tricks of the trade. Springer: 55–69 [Link](https://link.springer.com/chapter/10.1007/3-540-49430-8_3)
