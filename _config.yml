@@ -19,3 +19,8 @@ authors:
   matthew:
     name: Matthew Dalquist
     github: mdalquist
+
+nav:
+  - Home: /
+  - Github: https://github.com/vikwaran03/DSC180B_Q2
+  - Paper: https://drive.google.com/file/d/1RMm8bq_9rU4CFUQrDUupUsKiN2Jvkb8q/view?usp=drive_link
