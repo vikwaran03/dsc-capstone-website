@@ -14,10 +14,10 @@ title: Characterizing Extrachromosomal DNA Regions with Graph Neural Networks
 - <strong>We aim to characterize ecDNA regions, while also being able distinguish them from more benign amplified regions called Homogeneously Staining Regions (HSRs).</strong>
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-    <img src="figures/ec_clusters (4).png" alt="Image 1" width="45%">
-    <img src="figures/hsr_clusters.png" alt="Image 2" width="45%">
+    <img src="figures/ec_structure.png" alt="Image 1" width="45%">
+    <img src="figures/hsr_structure.png" alt="Image 2" width="45%">
 </div>
-<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 3: ecDNA (left) and HSR (right) PCA clusters </p>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 1: ecDNA (left) and HSR (right) 3d Structure </p>
 
 <br>
 
