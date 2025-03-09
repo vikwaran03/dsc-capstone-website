@@ -21,13 +21,17 @@ title: Characterizing Extrachromosomal DNA Regions with Graph Neural Networks
 
 <br>
 
-## **Data**
-### **HI-C Matrices**
-Explain...
-### **RNA-seq Reads**
-Explain...
+## **Data: Hi-C Matrices and RNA-seq Reads**
+- Aligned sequencing reads from the GBM39 cell line to the hg38 (human) genome, aggregating gene and read counts per 5000 bp genomic regions.
+- Mapped binned reads to edges defined by Hi-C matrices, constructing 2 connected graphs where nodes represent genomic regions and weighted edges capture interaction strength. 
+- Represented each Hi-C matrix as a 251×251 adjacency matrix for both ecDNA and HSR, with values indicating interaction frequency. For modeling, the top 25\% of edges by distance (binned into 14 bins of length 0.05) were pruned and binarized, with 1s marking significant connections [1].
+
 ### **Interaction Graphs**
-Display graphs here...
+<div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+    <img src="figures/full_graph.png" alt="Image 1" width="45%">
+    <img src="figures/graph3.png" alt="Image 2" width="45%">
+</div>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 2: Full interaction graph (left) and Interaction graph with certain regions selected (right) </p>
 
 ## **Methods**
 ### **Clustering**
