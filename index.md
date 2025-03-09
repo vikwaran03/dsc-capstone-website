@@ -17,7 +17,11 @@ Explain...
 ### Node2Vec
 Explain...
 ### GraphSAGE
-Explain...
+![GraphSAGE Clasification Pipeline](figure/Sage%20Process.png)
+
+
+
+![GraphSAGE Algorithm](figure/graphsagevis.png)
 
 ## Interaction Graphs
 Display graphs here...
@@ -34,6 +38,8 @@ We trained our GraphSAGE classification model on the combined graph G, obtaining
 | Precision   | 0.92327   | 0.82799   |
 | Recall      | 0.92294   | **0.82719** |
 | F1 Score    | 0.92304   | 0.82744   |
+
+![Confusion Matrix](figure/sage_confusion_matrix%20(1).png)
 
 ## Discussion
 ### Node2Vec
