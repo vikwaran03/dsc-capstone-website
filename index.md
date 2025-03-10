@@ -44,10 +44,10 @@ our analysis, modeling, and discussion.
 
 ### **Interaction Graphs**
 
+Check out our <a href="https://capstone-180b.streamlit.app/" target="_blank"> Interactive Graph Visualization </a>.
+
 Interactions graphs simplify visualizing all 251 genomic regions for both ecDNA and HSR. 
 For ease of visualization, we arbitrarily selected a genomic region to demonstrate the differences between ecDNA and HSR at the same loci. 
-
-Check out <a href="https://capstone-180b.streamlit.app/" target="_blank"> Interaction Graphs </a>
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
     <img src="figures/ec_graph.png" alt="Image 1" width="45%">
@@ -187,7 +187,7 @@ Of the four metrics we used to evaluate GraphSAGE, accuracy and recall are the m
 
 GraphSAGE performed well on both the train and test sets, but there is a notable discrepancy of about 0.1 in each metric between the two sets. This is likely due to the small size of our dataset. However, strong performance on the train set is a positive indicator that GraphSAGE was able to find patterns in the graph structure and node features differentiating ecDNA and HSR. Obtaining more cell samples on the GBM39 cell line can boost the robustness of our graph learning model. To further extend research on the classification task, GNNExplainer [6] can be attached to the GraphSAGE model to learn key predictive regions of the graph. These subgraphs can be matched to their 3D location, which could uncover key differences in structure between ecDNA and HSR. 
 
-We are extremely encouraged that our model was able reach over 80% accuracy with such a limited dataset given that we had only ~400 training points and used <0.1% of the human genome. It only goes to show the strength of a graph-based approach. We call for further work, with a broader range of data, to be done with GNNs in this context of this problem.
+We are extremely encouraged that our model was able reach over 80\% accuracy with such a limited dataset given that we had only ~400 training points and used <0.1% of the human genome. It only goes to show the strength of a graph-based approach. We call for further work, with a broader range of data, to be done with GNNs in this context of this problem.
 
 ## **References**
 [1] **Bigness, Jeremy, Xavier Loinaz, Shalin Patel, Erica Larschan, and Ritambhara Singh**. 2022. “Integrating long-range regulatory interactions to predict gene expression using graph convolutional networks.” Journal of Computational Biology 29(5): 409–424 [Link](https://www.liebertpub.com/doi/10.1089/cmb.2021.0316)
@@ -208,5 +208,5 @@ scalable, single-cell profiling of chromatin architecture in heterogeneous tissu
 
 [8] **van Berkum NL, Williams L Imakaev M Gnirke A Mirny LA Dekker J Lander ES,
 Lieberman-Aiden E.** 2010. “Hi-C: a method to study the three-dimensional architecture
-of genomes.” [Link](https://pmc.ncbi.nlm.nih.gov/articles/PMC3149993)
+of genomes.” [Link][https://pmc.ncbi.nlm.nih.gov/articles/PMC3149993/]
 
