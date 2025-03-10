@@ -36,7 +36,7 @@ title: Characterizing Extrachromosomal DNA Regions with Graph Neural Networks
 
 ## **Methods**
 ### **Clustering**
-We develop a pipeline as below to cluster our data. We take our ecDNA interaction graph, as defined above; apply node2vec [2] on it, giving us 16-dimensional vectors for each node; append the read counts and gene counts to the embeddings; reduce the data to 2 dimensions using PCA; and lastly cluster the data using DB-SCAN. We then repeat the process on the HSR graph.
+We develop a pipeline as below to cluster our data. We take our ecDNA interaction graph, as defined above; apply node2vec [2] on it, giving us 16-dimensional vectors for each node; append the read counts and gene counts to the embeddings; reduce the data to 2 dimensions using PCA; and lastly cluster the data using DBSCAN. We then repeat the process on the HSR graph.
 
 ![Node2Vec Clustering Pipeline](figures/clustering_pipeline.png)
 <p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 1: Clustering Pipeline </p>
@@ -50,9 +50,9 @@ After reducing the dimensionality of our node embeddings, we applied DBSCAN. DBS
 GraphSAGE is an inductive graph learning algorithm that simultaneously learns the graphical structure of the neighborhood of a node and the distribution of their features to create aggregated embeddings for each node in the training set of a graph [3]. For each node in the training set, denoted as the target node in the figure below, GraphSAGE samples its neighbors and aggregates their node features to update node embeddings. The vector containing the aggregated information of the neighbors is concatenated to the current state of the embedding for the target node. The final set of node embeddings contain information about the node features of its neighbors and the structure of the graph around it.
 
 <div style="text-align: center;">
-  <img src="figures/graphsagevis.png" alt="GraphSAGE Algorithm" width="600">
+  <img src="figures/graphsagevis.png" alt="GraphSAGE Algorithm" width="500">
   <p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 2: GraphSAGE Algorithm Visualization   
-    <a href="https://github.com/pyg-team/pytorch_geometric/discussions/3799" target="_blank"> Link to Source </a>
+    &nbsp;<a href="https://github.com/pyg-team/pytorch_geometric/discussions/3799" target="_blank"> Link to Source </a>
   </p>
 </div>
 
