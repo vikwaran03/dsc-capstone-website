@@ -11,13 +11,12 @@ title: Characterizing Extrachromosomal DNA Regions with Graph Neural Networks
 
 ## **Background and Research Goals**
 Extrachromosomal DNA (ecDNA) are amplified fragments of the genome that exist away from the chromosomes and has shown to be found in aggressive forms of cancer. From a genomic perspective, ecDNA regions should be identifiable from the presence of frequently occurring, repeated strings of
-base pairs. However, homogeneously staining regions (HSRs), which lie on the chromo-
-some itself, are also repeated DNA sequences but are benign in comparison to ecDNA. This
+base pairs. However, homogeneously staining regions (HSRs), which lie on the chromosome itself, are also repeated DNA sequences but are benign in comparison to ecDNA. This
 complicates the problem of identifying ecDNA because there exist two types of repeated
 genomic sequences that sequentially, appear largely the same. 
 
 Prior studies [7] have shown that ecDNA interacts more evenly with DNA regions on other chromosomes whereas HSRs tend to favor some over others. Mathematically, ecDNA have higher trans-to-cis contacting ratios than HSRs, meaning that the chromosomal interactions of ecDNA tend to be more with other
-chromosomes whereas those of HSRs tend to be higher in their host chromosomes. We aim to characterize ecDNA regions, while also being able distinguish them from HSRs, by capturing the inherent graphical structure of genomic interactions by utilizing graph-based methods like node2vec [2] and GraphSAGE [3].
+chromosomes whereas those of HSRs tend to be higher in their host chromosomes. **We aim to characterize ecDNA regions, while also being able distinguish them from HSRs, by capturing the inherent graphical structure of genomic interactions by utilizing graph-based methods like node2vec [2] and GraphSAGE [3].**
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
     <img src="figures/ec_structure.png" alt="Image 1" width="45%">
@@ -38,12 +37,7 @@ for gene expression. Next, we narrow our focus to the loci captured by the Hi-C 
 and adjust our dataset to match these regions.
 
 Hi-C matrices contain values corresponding to the frequency of interactions between two
-genomic regions [8]. Our Hi-C data captures genomic regions on chromosome 7 between loci chr7:54750000-56005000. We have two Hi-C matrices, each a
-251x251 adjacency matrix, for both ecDNA and HSR. Since all Hi-C values are non-zero,
-arranging this information directly into a graph results in two almost identical complete
-graphs, severely roadblocking our graph-learning tasks. To address this, we follow a thresholding protocol using the top 25% of interactions [1]. We bin each region by Euclidean distance,
-subtract the 75th percentile distance of the bins from each region’s Hi-C value, and discard
-all negative values. The remaining edges are then converted to 1s, resulting in a binarized
+genomic regions [8]. Our Hi-C data captures genomic regions on chromosome 7 between loci chr7:54750000-56005000. We have two Hi-C matrices, each a 251x251 adjacency matrix, for both ecDNA and HSR. Since all Hi-C values are non-zero, arranging this information directly into a graph results in two almost identical complete graphs, severely roadblocking our graph-learning tasks. To address this, we follow a thresholding protocol using the top 25% of interactions [1]. We bin each region by Euclidean distance, subtract the 75th percentile distance of the bins from each region’s Hi-C value, and discard all negative values. The remaining edges are then converted to 1s, resulting in a binarized
 adjacency matrix with 1s for significant genomic region interactions and 0s for others. This
 aligned sequencing data and pruned Hi-C matrix are the data that will be used throughout
 our analysis, modeling, and discussion.
@@ -52,6 +46,8 @@ our analysis, modeling, and discussion.
 
 Interactions graphs simplify visualizing all 251 genomic regions for both ecDNA and HSR. 
 For ease of visualization, we arbitrarily selected a genomic region to demonstrate the differences between ecDNA and HSR at the same loci. 
+
+Check out <a href="https://capstone-180b.streamlit.app/" target="_blank"> Interaction Graphs </a>
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
     <img src="figures/ec_graph.png" alt="Image 1" width="45%">
@@ -191,7 +187,7 @@ Of the four metrics we used to evaluate GraphSAGE, accuracy and recall are the m
 
 GraphSAGE performed well on both the train and test sets, but there is a notable discrepancy of about 0.1 in each metric between the two sets. This is likely due to the small size of our dataset. However, strong performance on the train set is a positive indicator that GraphSAGE was able to find patterns in the graph structure and node features differentiating ecDNA and HSR. Obtaining more cell samples on the GBM39 cell line can boost the robustness of our graph learning model. To further extend research on the classification task, GNNExplainer [6] can be attached to the GraphSAGE model to learn key predictive regions of the graph. These subgraphs can be matched to their 3D location, which could uncover key differences in structure between ecDNA and HSR. 
 
-We are extremely encouraged that our model was able reach over 80\% accuracy with such a limited dataset given that we had only ~400 training points and used <0.1% of the human genome. It only goes to show the strength of a graph-based approach. We call for further work, with a broader range of data, to be done with GNNs in this context of this problem.
+We are extremely encouraged that our model was able reach over 80% accuracy with such a limited dataset given that we had only ~400 training points and used <0.1% of the human genome. It only goes to show the strength of a graph-based approach. We call for further work, with a broader range of data, to be done with GNNs in this context of this problem.
 
 ## **References**
 [1] **Bigness, Jeremy, Xavier Loinaz, Shalin Patel, Erica Larschan, and Ritambhara Singh**. 2022. “Integrating long-range regulatory interactions to predict gene expression using graph convolutional networks.” Journal of Computational Biology 29(5): 409–424 [Link](https://www.liebertpub.com/doi/10.1089/cmb.2021.0316)
