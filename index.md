@@ -31,14 +31,19 @@ title: Characterizing Extrachromosomal DNA Regions with Graph Neural Networks
     <img src="figures/full_graph.png" alt="Image 1" width="45%">
     <img src="figures/graph3.png" alt="Image 2" width="45%">
 </div>
+<br>
 <p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 2: Full interaction graph (left) and Interaction graph with certain regions selected (right) </p>
 
 ## **Methods**
 ### **Clustering**
-We develop a pipeline as below to cluster our data. We take our ecDNA interaction graph, as defined above; apply node2vec [2] on it, giving us 16-dimensional vectors for each node; append the read counts and gene counts to the embeddings; reduce the data to 2 dimensions using PCA; and lastly cluster the data using DB-SCAN. We then repeat the process on the HSR graph. DB-SCAN allows us to find an unspecified number of clusters because we did not have a pre-specified amount of classes that we were looking for.
+We develop a pipeline as below to cluster our data. We take our ecDNA interaction graph, as defined above; apply node2vec [2] on it, giving us 16-dimensional vectors for each node; append the read counts and gene counts to the embeddings; reduce the data to 2 dimensions using PCA; and lastly cluster the data using DB-SCAN. We then repeat the process on the HSR graph.
 
 ![Node2Vec Clustering Pipeline](figures/clustering_pipeline.png)
 <p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 1: Clustering Pipeline </p>
+
+In more detail, node2vec [2] is a technique for learning continuous feature representations for nodes in a graph, preserving both local and global structural properties. It achieves this by simulating biased random walks on the graph, generating sequences of nodes similar to sentences from a natural language processing standpoint. These sequences are then used to train a Skip-Gram model, akin to Word2Vec, to learn embeddings that capture relationships between nodes. On a high level, we want nodes that are similar, in terms of both homophily and structural equivalance, to lie close together in the embeddings space. It is a powerful model to learn information-rich embeddings for our nodes. DBSCAN allows us to find an unspecified number of clusters because we did not have a pre-specified amount of classes that we were looking for. 
+
+After reducing the dimensionality of our node embeddings, we applied DBSCAN. DBSCAN is a clustering algorithm that groups closely packed points based on two parameters: epsilon (ε), the maximum distance between points to be considered neighbors, and minPts, the minimum number of points to form a dense cluster. It identifies core, border, and noise points, allowing it to detect clusters of arbitrary shapes and isolate outliers without needing to predefine the number of clusters. Since we did not have a specific number of clusters to classify into beforehand, this characteristic was the deciding factor in face of K-Means approaches, where we pre-define the number of classes.
 
 ### **Classification**
 
