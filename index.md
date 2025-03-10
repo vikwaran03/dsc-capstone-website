@@ -39,7 +39,7 @@ title: Characterizing Extrachromosomal DNA Regions with Graph Neural Networks
 We develop a pipeline as below to cluster our data. We take our ecDNA interaction graph, as defined above; apply node2vec [2] on it, giving us 16-dimensional vectors for each node; append the read counts and gene counts to the embeddings; reduce the data to 2 dimensions using PCA; and lastly cluster the data using DBSCAN. We then repeat the process on the HSR graph.
 
 ![Node2Vec Clustering Pipeline](figures/clustering_pipeline.png.png)
-<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 1: Clustering Pipeline </p>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 3: Clustering Pipeline </p>
 
 In more detail, node2vec [2] is a technique for learning continuous feature representations for nodes in a graph, preserving both local and global structural properties. It achieves this by simulating biased random walks on the graph, generating sequences of nodes similar to sentences from a natural language processing standpoint. These sequences are then used to train a Skip-Gram model, akin to Word2Vec, to learn embeddings that capture relationships between nodes. On a high level, we want nodes that are similar, in terms of both homophily and structural equivalance, to lie close together in the embeddings space. It is a powerful model to learn information-rich embeddings for our nodes. DBSCAN allows us to find an unspecified number of clusters because we did not have a pre-specified amount of classes that we were looking for. 
 
@@ -51,7 +51,7 @@ GraphSAGE is an inductive graph learning algorithm that simultaneously learns th
 
 <div style="text-align: center;">
   <img src="figures/graphsagevis.png" alt="GraphSAGE Algorithm" width="500">
-  <p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 2: GraphSAGE Algorithm Visualization   
+  <p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 4: GraphSAGE Algorithm Visualization   
     &nbsp;<a href="https://github.com/pyg-team/pytorch_geometric/discussions/3799" target="_blank"> Link to Source </a>
   </p>
 </div>
@@ -61,7 +61,7 @@ GraphSAGE is useful for our classification problem due to differences in genomic
 We trained GraphSAGE on a graph containing both the ecDNA and HSR portions, with each being a disjoint subgraph of a larger graph. Our model followed an encoder decoder paradigm. The encoder consisted of two GraphSAGE layers that generated 16-dimensional embeddings for each node. The decoder consisted of two linear fully connected layers with ReLU activation, reducing the dimensionality to a 2 dimensional output layer. Softmax was applied to the output layer for classification, and Cross Entropy loss was used to evaluate predictions and train the model.  
 
 ![GraphSAGE Classification Pipeline](figures/Sage%20Process.png)
-<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 3: Classification Pipeline </p>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 5: Classification Pipeline </p>
 
 
 ## **Results**
@@ -72,7 +72,7 @@ These are the results of PCA and subsequent clustering for ecDNA (left) and HSR 
     <img src="figures/ec_clusters (4).png" alt="Image 1" width="45%">
     <img src="figures/hsr_clusters.png" alt="Image 2" width="45%">
 </div>
-<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 4: ecDNA (left) and HSR (right) PCA clusters </p>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 6: ecDNA (left) and HSR (right) PCA clusters </p>
 
 <br>
 
@@ -82,7 +82,7 @@ We visualized these clusters by overlaying their locations on top of the heatmap
     <img src="figures/ec_hic_clusters (2).png" alt="Image 1" width="45%">
     <img src="figures/hsr_hic_clusters (3).png" alt="Image 2" width="45%">
 </div>
-<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 5: ecDNA (left) and HSR (right) HI-C heatmap with clusters and gene track </p>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 7: ecDNA (left) and HSR (right) HI-C heatmap with clusters and gene track </p>
 
 <br>
 
@@ -91,12 +91,12 @@ After computing these clusters, we checked if these clusters created significant
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
     <img src="figures/ec_pval_heatmap (1).png" alt="Image 1" width="90%">
 </div>
-<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 6: ecDNA U-Test P-Values </p>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 8: ecDNA U-Test P-Values </p>
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
     <img src="figures/hsr_pval_heatmap (1).png" alt="Image 1" width="90%">
 </div>
-<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 7: HSR U-Test P-Values </p>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 9: HSR U-Test P-Values </p>
 
 
 <br>
@@ -142,7 +142,7 @@ We trained our GraphSAGE classification model on the combined graph G, obtaining
         <img src="figures/sage_confusion_matrix%20(1).png" alt="Confusion Matrix" style="width: 100%;">
     </div>
 </div>
-<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 8: GraphSAGE Results Table (left) and Confusion Matrix (right) </p>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 10: GraphSAGE Results Table (left) and Confusion Matrix (right) </p>
 
 ## **Takeaways**
 ### **Clustering**
@@ -156,7 +156,7 @@ We defined three different types of clusters given our results - the sparse outl
     <img src="figures/selected_clusters_3d (1).png" alt="Image 1" width="45%">
     <img src="figures/ec_structure_selected_genes (2).png" alt="Image 2" width="45%">
 </div>
-<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 9: &nbsp;<strong>Left</strong>: ecDNA Structure with Clusters 4 and 5 highlighted &nbsp;<strong>Right</strong>: Same as &nbsp;<strong>Left</strong>&nbsp; but specific genes highlighted </p>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 11: &nbsp;<strong>Left</strong>: ecDNA Structure with Clusters 4 and 5 highlighted &nbsp;<strong>Right</strong>: Same as &nbsp;<strong>Left</strong>&nbsp; but specific genes highlighted </p>
    
 - Graphically, the two most populous clusters in ecDNA and HSR behave significantly differently. At the 5% significance level, the only two clusters that were significant in all of the graph properties we looked at were Cluster 1 (outliers) and Cluster 2 (dense core). These two clusters behave distinctly when it comes to HI-C interactions and gene/read counts.
 
