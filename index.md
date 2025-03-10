@@ -17,7 +17,7 @@ complicates the problem of identifying ecDNA because there exist two types of re
 genomic sequences that sequentially, appear largely the same. 
 
 Prior studies [7] have shown that ecDNA interacts more evenly with DNA regions on other chromosomes whereas HSRs tend to favor some over others. Mathematically, ecDNA have higher trans-to-cis contacting ratios than HSRs, meaning that the chromosomal interactions of ecDNA tend to be more with other
-chromosomes whereas those of HSRs tend to be higher in their host chromosomes. <strong>We aim to characterize ecDNA regions, while also being able distinguish them from HSRs, by capturing the inherent graphical structure of genomic interactions by utilizing graph-based methods like node2vec [2] and GraphSAGE [3]. </strong> 
+chromosomes whereas those of HSRs tend to be higher in their host chromosomes. We aim to characterize ecDNA regions, while also being able distinguish them from HSRs, by capturing the inherent graphical structure of genomic interactions by utilizing graph-based methods like node2vec [2] and GraphSAGE [3].
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
     <img src="figures/ec_structure.png" alt="Image 1" width="45%">
