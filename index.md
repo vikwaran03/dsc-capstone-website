@@ -10,8 +10,14 @@ title: Characterizing Extrachromosomal DNA Regions with Graph Neural Networks
 <br>
 
 ## **Background and Research Goals**
-- Extrachromosomal DNA (ecDNA) are amplified fragments of the genome that exist away from the chromosomes. ecDNA has been shown to be found in aggressive forms of cancer.
-- <strong>We aim to characterize ecDNA regions, while also being able distinguish them from more benign amplified regions called Homogeneously Staining Regions (HSRs).</strong>
+Extrachromosomal DNA (ecDNA) are amplified fragments of the genome that exist away from the chromosomes and has shown to be found in aggressive forms of cancer. From a genomic perspective, ecDNA regions should be identifiable from the presence of frequently occurring, repeated strings of
+base pairs. However, homogeneously staining regions (HSRs), which lie on the chromo-
+some itself, are also repeated DNA sequences but are benign in comparison to ecDNA. This
+complicates the problem of identifying ecDNA because there exist two types of repeated
+genomic sequences that sequentially, appear largely the same. 
+
+Prior studies [7] have shown that ecDNA interacts more evenly with DNA regions on other chromosomes whereas HSRs tend to favor some over others. Mathematically, ecDNA have higher trans-to-cis contacting ratios than HSRs, meaning that the chromosomal interactions of ecDNA tend to be more with other
+chromosomes whereas those of HSRs tend to be higher in their host chromosomes. <strong>We aim to characterize ecDNA regions, while also being able distinguish them from HSRs, by capturing the inherent graphical structure of genomic interactions by utilizing graph-based methods like node2vec [2] and GraphSAGE [3]. </strong> 
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
     <img src="figures/ec_structure.png" alt="Image 1" width="45%">
@@ -28,11 +34,11 @@ title: Characterizing Extrachromosomal DNA Regions with Graph Neural Networks
 
 ### **Interaction Graphs**
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-    <img src="figures/full_graph.png" alt="Image 1" width="45%">
+    <img src="figures/ec_graph.png" alt="Image 1" width="45%">
     <img src="figures/graph3.png" alt="Image 2" width="45%">
 </div>
 <br>
-<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 2: Full interaction graph (left) and Interaction graph with certain regions selected (right) </p>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 2: ecDNA interaction graph (left) and HSR interactions graph (right) </p>
 
 ## **Methods**
 ### **Clustering**
@@ -179,4 +185,8 @@ We are extremely encouraged that our model was able reach over 80\% accuracy wit
 [5] **Wu, Sihan, Kristen M Turner, Nam Nguyen, Ramya Raviram, Marcella Erb, Jennifer Santini, Jens Luebeck, Utkrisht Rajkumar, Yarui Diao, Bin Li et al.** 2019. “Circular ecDNA promotes accessible chromatin and high oncogene expression.” Nature 575 (7784): 699–703 [Link](https://www.nature.com/articles/s41586-019-1763-5)
 
 [6] **Ying, Rex, Dylan Bourgeois, Jiaxuan You, Marinka Zitnik, and Jure Leskovec.** 2019. “GNNExplainer: Generating Explanations for Graph Neural Networks.” [Link](https://arxiv.org/abs/1903.03894)
+
+[7] **Chang, Lei, Yang Xie, Brett Taylor, Zhaoning Wang, Jiachen Sun, Ethan J Armand,
+Shreya Mishra, Jie Xu, Melodi Tastemel, Audrey Lie et al.** 2024. “Droplet Hi-C enables
+scalable, single-cell profiling of chromatin architecture in heterogeneous tissues.” [Link](https://www.nature.com/articles/s41587-024-02447-1)
 
