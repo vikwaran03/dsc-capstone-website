@@ -42,7 +42,7 @@ We develop a pipeline as below to cluster our data. We take our ecDNA interactio
 
 ### **Classification**
 
-GraphSAGE is an inductive graph learning algorithm that simultaneously learns the graphical structure of the neighborhood of a node and the distribution of their features to create aggregated embeddings for each node in the training set of a graph [1]. For each node in the training set, denoted as the target node in the figure above, GraphSAGE samples its neighbors and aggregates their node features to update node embeddings. The vector containing the aggregated information of the neighbors is concatenated to the current state of the embedding for the target node. The final set of node embeddings contain information about the node features of its neighbors and the structure of the graph around it.
+GraphSAGE is an inductive graph learning algorithm that simultaneously learns the graphical structure of the neighborhood of a node and the distribution of their features to create aggregated embeddings for each node in the training set of a graph [1]. For each node in the training set, denoted as the target node in the figure below, GraphSAGE samples its neighbors and aggregates their node features to update node embeddings. The vector containing the aggregated information of the neighbors is concatenated to the current state of the embedding for the target node. The final set of node embeddings contain information about the node features of its neighbors and the structure of the graph around it.
 
 <div style="text-align: center;">
   <img src="figures/graphsagevis.png" alt="GraphSAGE Algorithm" width="600">
