@@ -135,6 +135,7 @@ We trained our GraphSAGE classification model on the combined graph G, obtaining
         <img src="figures/sage_confusion_matrix%20(1).png" alt="Confusion Matrix" style="width: 100%;">
     </div>
 </div>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 8: GraphSAGE Results Table (left) and Confusion Matrix (right) </p>
 
 ## **Takeaways**
 ### **Clustering**
@@ -148,7 +149,7 @@ We defined three different types of clusters given our results - the sparse outl
     <img src="figures/selected_clusters_3d (1).png" alt="Image 1" width="45%">
     <img src="figures/ec_structure_selected_genes (2).png" alt="Image 2" width="45%">
 </div>
-<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 8: &nbsp;<strong>Left</strong>: ecDNA Structure with Clusters 4 and 5 highlighted &nbsp;<strong>Right</strong>: Same as &nbsp;<strong>Left</strong>&nbsp; but specific genes highlighted </p>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 9: &nbsp;<strong>Left</strong>: ecDNA Structure with Clusters 4 and 5 highlighted &nbsp;<strong>Right</strong>: Same as &nbsp;<strong>Left</strong>&nbsp; but specific genes highlighted </p>
    
 - Graphically, the two most populous clusters in ecDNA and HSR behave significantly differently. At the 5% significance level, the only two clusters that were significant in all of the graph properties we looked at were Cluster 1 (outliers) and Cluster 2 (dense core). These two clusters behave distrinctly when it comes to HI-C interactions and gene/read counts.
 
