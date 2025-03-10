@@ -28,17 +28,38 @@ chromosomes whereas those of HSRs tend to be higher in their host chromosomes. <
 <br>
 
 ## **Data: Hi-C Matrices and RNA-seq Reads**
-- Aligned sequencing reads from the GBM39 cell line to the hg38 (human) genome, aggregating gene and read counts per 5000 bp genomic regions.
-- Mapped binned reads to edges defined by Hi-C matrices, constructing 2 connected graphs where nodes represent genomic regions and weighted edges capture interaction strength. 
-- Represented each Hi-C matrix as a 251×251 adjacency matrix for both ecDNA and HSR, with values indicating interaction frequency. For modeling, the top 25\% of edges by distance (binned into 14 bins of length 0.05) were pruned and binarized, with 1s marking significant connections [1].
+We align RNA sequencing reads from the GBM39 cell line to the hg38 (human) reference
+genome for both ecDNA and HSR. The genome is divided into 5000 base pair (bp) segments,
+and each mapped read is assigned to one of these regions. This process is repeated with
+gene annotation data, assigning genes to every genomic region in which they are present,
+allowing a gene to be counted in multiple regions. As a result, we obtain read and gene
+counts for each genomic region for both ecDNA and HSR. Our read counts serve as a proxy
+for gene expression. Next, we narrow our focus to the loci captured by the Hi-C matrices
+and adjust our dataset to match these regions.
+
+Hi-C matrices contain values corresponding to the frequency of interactions between two
+genomic regions [8]. Our Hi-C data captures genomic regions on chro-
+mosome 7 between loci chr7:54750000-56005000. We have two Hi-C matrices, each a
+251x251 adjacency matrix, for both ecDNA and HSR. Since all Hi-C values are non-zero,
+arranging this information directly into a graph results in two almost identical complete
+graphs, severely roadblocking our graph-learning tasks. To address this, we follow a thresholding protocol using the top 25% of interactions [1]. We bin each region by Euclidean distance,
+subtract the 75th percentile distance of the bins from each region’s Hi-C value, and discard
+all negative values. The remaining edges are then converted to 1s, resulting in a binarized
+adjacency matrix with 1s for significant genomic region interactions and 0s for others. This
+aligned sequencing data and pruned Hi-C matrix are the data that will be used throughout
+our analysis, modeling, and discussion.
 
 ### **Interaction Graphs**
+
+Interactions graphs simplify visualizing all 251 genomic regions for both ecDNA and HSR. 
+For ease of visualization, we arbitrarily selected a genomic region to demonstrate the differences between ecDNA and HSR at the same loci. 
+
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
     <img src="figures/ec_graph.png" alt="Image 1" width="45%">
-    <img src="figures/graph3.png" alt="Image 2" width="45%">
+    <img src="figures/hsr_graph.png" alt="Image 2" width="45%">
 </div>
 <br>
-<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 2: ecDNA interaction graph (left) and HSR interactions graph (right) </p>
+<p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 2: ecDNA interaction graph (left) and HSR interactions graph (right) with same regions selected </p>
 
 ## **Methods**
 ### **Clustering**
@@ -189,4 +210,8 @@ We are extremely encouraged that our model was able reach over 80\% accuracy wit
 [7] **Chang, Lei, Yang Xie, Brett Taylor, Zhaoning Wang, Jiachen Sun, Ethan J Armand,
 Shreya Mishra, Jie Xu, Melodi Tastemel, Audrey Lie et al.** 2024. “Droplet Hi-C enables
 scalable, single-cell profiling of chromatin architecture in heterogeneous tissues.” [Link](https://www.nature.com/articles/s41587-024-02447-1)
+
+[8] **van Berkum NL, Williams L Imakaev M Gnirke A Mirny LA Dekker J Lander ES,
+Lieberman-Aiden E.** 2010. “Hi-C: a method to study the three-dimensional architecture
+of genomes.” [Link][https://pmc.ncbi.nlm.nih.gov/articles/PMC3149993/]
 
