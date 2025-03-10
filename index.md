@@ -46,7 +46,9 @@ GraphSAGE is an inductive graph learning algorithm that simultaneously learns th
 
 <div style="text-align: center;">
   <img src="figures/graphsagevis.png" alt="GraphSAGE Algorithm" width="600">
-  <p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 2: GraphSAGE Algorithm Visualization   <a href="https://github.com/pyg-team/pytorch_geometric/discussions/3799" target="_blank"> Link to Source </a></p>
+  <p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 2: GraphSAGE Algorithm Visualization   
+    <a href="https://github.com/pyg-team/pytorch_geometric/discussions/3799" target="_blank"> Link to Source </a>
+  </p>
 </div>
 
 GraphSAGE is useful for our classification problem due to differences in genomic interaction and genetic expression between HSR and ecDNA. In terms of genomic interaction, ecDNA has a circular structure [5], whereas HSR does not, allowing regions within ecDNA to uniquely interact. In terms of genetic expression, ecDNA is more expressive than HSR. Its existence off of the chromosome amplifies the genes it contains. Genomic interaction is represented by the edges in our graph, and expression is captured in the graph through the RNA-seq read count feature of the node vector. Notable differences in interactions and expression, captured by the structure and node features of the graph, naturally lead to the use of GraphSAGE for the classification task.
