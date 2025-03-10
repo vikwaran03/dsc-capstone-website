@@ -38,8 +38,7 @@ for gene expression. Next, we narrow our focus to the loci captured by the Hi-C 
 and adjust our dataset to match these regions.
 
 Hi-C matrices contain values corresponding to the frequency of interactions between two
-genomic regions [8]. Our Hi-C data captures genomic regions on chro-
-mosome 7 between loci chr7:54750000-56005000. We have two Hi-C matrices, each a
+genomic regions [8]. Our Hi-C data captures genomic regions on chromosome 7 between loci chr7:54750000-56005000. We have two Hi-C matrices, each a
 251x251 adjacency matrix, for both ecDNA and HSR. Since all Hi-C values are non-zero,
 arranging this information directly into a graph results in two almost identical complete
 graphs, severely roadblocking our graph-learning tasks. To address this, we follow a thresholding protocol using the top 25% of interactions [1]. We bin each region by Euclidean distance,
