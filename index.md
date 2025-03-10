@@ -102,7 +102,7 @@ After computing these clusters, we checked if these clusters created significant
 <br>
 
 ### **Classification Results**
-We trained our GraphSAGE classification model on the combined graph G, obtaining the results in the table below. We split the graph into train, validation, and test sets using masks with a split of 70%/15%/15%. The test metrics in the table display the results of predictions on both the validation and test sets. Early stopping [4] was implemented to capture the best performing model during training.
+We trained our GraphSAGE classification model on the combined graph G, obtaining the results in the table below. We split the graph into train, validation, and test sets using masks with a split of 70%-15%-15%. The test metrics in the table display the results of predictions on both the validation and test sets. Early stopping [4] was implemented to capture the best performing model during training.
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 40px;">
     <div>
