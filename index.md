@@ -38,7 +38,7 @@ title: Characterizing Extrachromosomal DNA Regions with Graph Neural Networks
 ### **Clustering**
 We develop a pipeline as below to cluster our data. We take our ecDNA interaction graph, as defined above; apply node2vec [2] on it, giving us 16-dimensional vectors for each node; append the read counts and gene counts to the embeddings; reduce the data to 2 dimensions using PCA; and lastly cluster the data using DBSCAN. We then repeat the process on the HSR graph.
 
-![Node2Vec Clustering Pipeline](figures/clustering_pipeline.png)
+![Node2Vec Clustering Pipeline](figures/clustering_pipeline.png.png)
 <p style="display: flex; justify-content: center; align-items: center; font-size: 10px"> Figure 1: Clustering Pipeline </p>
 
 In more detail, node2vec [2] is a technique for learning continuous feature representations for nodes in a graph, preserving both local and global structural properties. It achieves this by simulating biased random walks on the graph, generating sequences of nodes similar to sentences from a natural language processing standpoint. These sequences are then used to train a Skip-Gram model, akin to Word2Vec, to learn embeddings that capture relationships between nodes. On a high level, we want nodes that are similar, in terms of both homophily and structural equivalance, to lie close together in the embeddings space. It is a powerful model to learn information-rich embeddings for our nodes. DBSCAN allows us to find an unspecified number of clusters because we did not have a pre-specified amount of classes that we were looking for. 
