@@ -208,5 +208,5 @@ scalable, single-cell profiling of chromatin architecture in heterogeneous tissu
 
 [8] **van Berkum NL, Williams L Imakaev M Gnirke A Mirny LA Dekker J Lander ES,
 Lieberman-Aiden E.** 2010. “Hi-C: a method to study the three-dimensional architecture
-of genomes.” [Link][https://pmc.ncbi.nlm.nih.gov/articles/PMC3149993/]
+of genomes.” [Link](https://pmc.ncbi.nlm.nih.gov/articles/PMC3149993)
 
